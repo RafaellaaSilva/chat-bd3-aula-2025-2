@@ -4,13 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHAT - MONGODB</title>
-    <link rel="Stylessheet" href="./styles.css"/>
+
+    <link rel="Stylesheet" href="./styles.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"></script>
+
 </head>
 
 <body>
-    <h1>TESTE DE FRONT-END - CHAT MONGODB</h1>
-    <h2>OUTRO TESTE DE FORNT-END</h2>
-    
+
+    <div class="container">
+        <h1>APP DE CHAT COM MONGODB</h1>
+   
+
+        <form id="chat">
+
+            <input type="text" name="username" id="username" placeholder="Digite seu nome de usuario">
+            <br/>
+            <input multiple type="text" name="message" id="message" placeholder="Digite">
+            <br/>
+            <button type="submit">Enviar</button>
+            
+            <div class="messages"> </div>
+
+            <script src="socket.io/socket.io.js"></script>
+
+            <script>
+
+                const socket = io('http://localhost:3000')
+
+                //Captura os dados de usuario e de messagem di usuario
+                    $('#chat').submit(function(event) {
+
+                        event.preventDefault();
+                        //alert('funcionou!')
+                        
+                        // Recuperaa os dados de usuarios e mensagem 
+                        let usuario = $('input[name=username]').val();
+                        let mensagem = $('input[name=message]').val();
+
+                        console.log('USUARIO: ' + usuario)
+                        console.log('MENSAGEM: ' + mensagem)
+
+
+                    });
+
+            </script>
+
+        </form> 
+
+    </div>
 </body>
 
 </html>
